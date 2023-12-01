@@ -13,6 +13,23 @@
     list-style: none;
   }
   
+  @font-face {
+    font-family: 'M12';
+    src: url(../../public/font/m12.TTF);
+    font-family: 'Roca One';
+    src: url(../../public/font/RocaOne-Rg.ttf);
+  }
+
+  h1,h2,h3,h4,h5,h6{
+    font-family: 'Roca One';
+    font-size: 24px;
+  }
+  p,a{
+    font-family: 'M12';
+    font-size: 16px;
+  }
+
+
   .header {
     position: sticky;
     top: 0;
@@ -32,7 +49,7 @@
   .logo a {
     font-size: 24px;
     font-weight: bold;
-    color: #000;
+    color: #f00;
   }
   
   .logo a span {
@@ -355,11 +372,68 @@ h3{
 
 
 
-/*  Barre de recherche */
+/* Produit */
 
+.show{
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+ 
+}
 
+.prod{
+  border: #000 solid ;
+  padding: 20px;
+  font-weight: bold;
+  color: #131268;
+}
 
+.form{
+  display: flex;
+  flex-direction: column;
+}
 
+.btn{
+  border: #000 solid ;
+  border-radius: 8px;
+}
+
+.btn:hover{
+  background-color: #131268;
+  color: #fff;
+}
+
+.picture{
+  text-align: center;
+  font-weight: bold;
+  color:#131268;
+
+}
+
+.images{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.images img {
+  max-width: 100%; 
+  margin-bottom: 10px; 
+}
+
+.desp{
+  display: flex;
+  justify-content: space-between;
+}
+
+hr{
+  border: 1px solid ;
+}
+
+#description{
+  display: none;
+  white-space: pre-line;
+}
 
 /* footer */
 
@@ -449,6 +523,14 @@ h3{
     cursor: pointer;
   }
 
+  /* Produit  */
+
+  .show {
+    flex-direction: column;
+    align-items: center; 
+    height: 100%;
+  }
+
   /* Footer */
   .footer {
     flex-direction: column;
@@ -456,8 +538,8 @@ h3{
   }
 
   .map{
-    max-width: 300px; /* Largeur maximale pour la carte sur mobile */
-    width: 100%; /* Prend toute la largeur disponible */
+    max-width: 300px; 
+    width: 100%;
   }
    
   .map iframe{
@@ -469,9 +551,9 @@ h3{
 
 
 @media only screen and (min-width: 450px) {
-  /* Ajustez la marge droite pour ces écrans */
+  
   .menu {
-    margin-right: 0; /* Par exemple, réinitialisez la marge droite à zéro */
+    margin-right: 0; 
   }
 }
 
@@ -484,9 +566,7 @@ h3{
 }
 
 
-/* Maps */
 
-/* Styles pour rendre la carte Google Maps responsive */
 
 
 

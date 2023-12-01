@@ -1,4 +1,5 @@
 import './bootstrap';
+import './nav';
 
 import Alpine from 'alpinejs';
 
@@ -64,19 +65,39 @@ updateButtons.forEach(button => {
         const newQuantity = this.previousElementSibling.value;
     });
 });
+$(document).ready(function() {
+    // Écoutez le changement de la quantité
+    $('.quantity-input').on('input', function() {
+        // Obtenez la nouvelle quantité
+        var newQuantity = $(this).val();
 
+        // Mettez à jour la quantité dans le DOM ou envoyez la nouvelle quantité au serveur
+        // ...
 
-  $(document).ready(function() {
-    $(".add-to-cart-button").click(function() {
-        var articleId = $(this).data("article");
-        
-        // Effectuez une requête AJAX pour ajouter l'article au panier, par exemple :
-        // $.post('/cart/add', { article_id: articleId }, function(response) {
-        //     // Affichez le popup avec le message de succès
-        //     $("#cart-popup").fadeIn().delay(2000).fadeOut();
-        // });
-        
-        // Pour l'exemple, affichons simplement le popup sans requête AJAX
-        $("#cart-popup").fadeIn().delay(2000).fadeOut();
+        // Mettez à jour le total en fonction de la nouvelle quantité
+        updateTotal();
+    });
+
+    // Fonction pour mettre à jour le total
+    function updateTotal() {
+        var total = 0;
+
+        // Calculez le nouveau total en parcourant toutes les lignes de la table
+        // ...
+
+        // Mettez à jour le total dans le DOM
+        $('#total-amount').text(total);
+    }
+
+    // Écoutez le clic sur le bouton "Mettre à jour"
+    $('.update-quantity').on('click', function() {
+        // Obtenez l'ID de l'élément associé à ce bouton
+        var itemId = $(this).data('id');
+
+        // Mettez à jour la quantité côté serveur ou dans le DOM
+        // ...
+
+        // Mettez à jour le total en fonction de la nouvelle quantité
+        updateTotal();
     });
 });

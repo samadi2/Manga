@@ -6,16 +6,21 @@
     </x-slot>
 
     <div class="py-6">
-    @if (isset($message))
+        @if (isset($message))
         <p>{{ $message }}</p>
-    @else
-            <ul>
-                @foreach ($article as $article)
-                    <li>
-                        <a href="{{ route('articles.show', $article) }}">{{ $article->title }}</a>
-                    </li>
+        @else
+            <div class="arti">
+                @foreach ($article as $articles)
+                <div class="arti1">
+                    <a href="{{ url('articles/'. $articles->id) }}"><img src="{{ asset('storage/'.$articles->picture) }}" alt="image du manga {{$articles->title}}"></a>
+                    <div class="post ">
+                        <a href="{{ url('articles/'. $articles->id) }}"><h2>{{$articles->title}}</h2></a>
+                        
+                        <p>{{$articles->price}}€</p>
+                    </div>                
+                </div>
                 @endforeach
-            </ul>
+            </div>
         @endif
     </div>
 </x-app-layout>

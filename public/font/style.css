@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Roca';
+    src: local('Roca One Regular'), local('Roca-One-Regular'),
+        url('RocaOne-Rg.woff2') format('woff2'),
+        url('RocaOne-Rg.woff') format('woff'),
+        url('RocaOne-Rg.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }

@@ -44,7 +44,7 @@ class ArticleController extends Controller
             "content" => 'bail|required',
             "genre" => 'bail|required',
             "price" => 'bail|required|int|max:1000',
-            "qte" => 'bail|required|int|max:10',
+            "qte" => 'bail|required|int|max:50',
         ]);
 
         

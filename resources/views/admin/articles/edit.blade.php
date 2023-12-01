@@ -6,31 +6,77 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 shadow sm:rounded-lg p-6">
-                <form action="{{ route('admin.articles.update', $article->id) }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    @method('PUT')
-                    <label for="title">Titre :</label>
-                    <input type="text" name="title" id="title" value="{{ $article->title }}">
-                    <label for="picture">Image :</label>
-                    <input type="file" name="picture" id="picture">
-                    <label for="content">Contenu :</label>
+        <div class="w-full flex justify-center flex-col items-center">
+            <!-- Si nous avons un Post $article -->
+            @if (isset($article))
+            <form action="{{ route('admin.articles.update', $article->id) }}" method="POST" enctype="multipart/form-data" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
+                @method('PUT')
+            @else
+            <form method="POST" action="{{ route('admin.articles.store') }}" enctype="multipart/form-data" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col" >    
+            @endif
+                @csrf
+                <div>
+                    <label class="block text-gray-700 text-lg font-bold mb-2" for="title">Titre :</label>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="title" id="title" value="{{ $article->title }}">
+
+                    @error("title")
+				    <div>{{ $message }}</div>
+				    @enderror
+                </div>
+                @if(isset($article->picture))
+                <div class="mb-4">
+                    <span>Couverture actuelle</span><br/>
+                    <img src="{{ asset('storage/'.$article->picture) }}" alt="image de couverture actuelle" style="max-height: 200px;" >
+                </div>
+			    @endif
+                <div>
+                    <label class="block text-gray-700 text-lg font-bold mb-2" for="picture">Image :</label>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="file" name="picture" id="picture">
+
+                    @error("picture")
+				    <div>{{ $message }}</div>
+				    @enderror
+                </div>
+                <div>
+                    <label class="block text-gray-700 text-lg font-bold mb-2" for="content">Contenu :</label>
                     <textarea name="content" id="content">{{ $article->content }}</textarea>
-                    <label for="genre">Genre :</label>
+
+                    @error("content")
+				    <div>{{ $message }}</div>
+				    @enderror
+                </div>
+                <div>
+                    <label class="block text-gray-700 text-lg font-bold mb-2" for="genre">Genre :</label>
                     <select name="genre" id="genre">
                         <option value="shonen">Shonen</option>
                         <option value="seinen">Seinen</option>
                         <option value="shojo">Shojo</option>
                         <option value="josei">Josei</option>
                     </select>
-                    <label for="price">Prix :</label>
-                    <input type="number" name="price" id="price" value="{{ $article->price }}">
-                    <label for="qte">Quantité en stock :</label>
-                    <input type="number" name="qte" id="qte" value="{{ $article->qte }}">
-                    <button type="submit">Mettre à jour</button>
-                </form>
-            </div>
+
+                    @error("genre")
+				    <div>{{ $message }}</div>
+				    @enderror
+                </div>
+                <div>
+                    <label class="block text-gray-700 text-lg font-bold mb-2" for="price">Prix :</label>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" name="price" id="price" value="{{ $article->price }}">
+
+                    @error("price")
+				    <div>{{ $message }}</div>
+				    @enderror
+                </div>
+                <div>
+                    <label class="block text-gray-700 text-lg font-bold mb-2" for="qte">Quantité en stock :</label>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" name="qte" id="qte" value="{{ $article->qte }}"> <br>
+
+
+                    @error("qte")
+				    <div>{{ $message }}</div>
+				    @enderror
+                </div>
+                <button class="btn" type="submit">Mettre à jour</button>
+            </form>
         </div>
     </div>
 </x-app-layout>

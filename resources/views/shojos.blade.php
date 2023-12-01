@@ -7,9 +7,9 @@
     <div class="arti">
         @foreach($shojo as $articles)
         <div class="arti1">
-            <img src="{{ asset('storage/'.$articles->picture) }}" alt="image du manga {{$articles->title}}">
+            <a href="{{ url('articles/'. $articles->id) }}"><img src="{{ asset('storage/'.$articles->picture) }}" alt="image du manga {{$articles->title}}"></a>
             <div class="post ">
-                <a href="#"><h2>{{$articles->title}}</h2></a>
+                <a href="{{ url('articles/'. $articles->id) }}"><h2>{{$articles->title}}</h2></a>
                 <p>{{$articles->price}}€</p>
             </div>                
         </div>

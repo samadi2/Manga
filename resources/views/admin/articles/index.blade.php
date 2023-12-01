@@ -44,7 +44,7 @@
                                         <form action="{{ route('admin.articles.destroy', $article->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit">Supprimer</button>
+                                            <button type="submit"><i class="fa-solid fa-trash fa-xl" style="color: #ff0000;"></i></button>
                                         </form>
                                     @endcan
                                 </td>
